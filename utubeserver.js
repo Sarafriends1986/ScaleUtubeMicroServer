@@ -47,7 +47,7 @@ console.log("next date only str : " + mynextdateonlystr);
   });// sample post
 
 
-  app.get('/youtubeget', function(req, res){
+  app.get('/api/youtubeget', function(req, res){
    
       const queryText = 'select * from youtubetable;'
       pool.query(queryText,  async (err, result) => {

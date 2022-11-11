@@ -1,4 +1,4 @@
-/* Scalable Services assignment */
+/* Scalable Services assignment Utube*/
 
 /* build in Master node */
 //node{
@@ -7,6 +7,7 @@ node('slave_A') {
    stage('Checkout Code') { 
      
 	 try {
+	 sh 'echo "Checkout Code..."'
 	  checkout scm
 	 }catch (err) {
 	  echo "Caught: ${err}"
@@ -19,7 +20,7 @@ node('slave_A') {
 		try {
 		  if (isUnix()) {
 			 
-			 sh 'echo "Maven Test..."'
+			 sh 'echo "Docker Build..."'
 			 sh 'pwd'
 			 sh 'ls -ltr'
 			 sh 'docker build -t sarafriends1986/scale-utube-micro-node:v_00.00.001 .'
@@ -38,8 +39,8 @@ node('slave_A') {
    
 		try {
 		  if (isUnix()) {
-			 
-			 sh 'echo "Maven Test..."'
+		  
+			 sh 'echo "Docker Image Upload..."'
 			 sh 'pwd'
 			 sh 'ls -ltr'
 			 sh 'docker images sarafriends1986/scale-utube-micro-node'
@@ -59,12 +60,14 @@ node('slave_A') {
    
 		try {
 		  if (isUnix()) {
-			 
-			 sh 'echo "Maven Test..."'
+		  
+			 sh 'echo "Kubernetes Deployment..."'
 			 sh 'pwd'
 			 sh 'ls -ltr'
 			 sh 'kubectl get deployments utube-micro-deployment -o wide'
 			 sh 'kubectl set image deployment/utube-micro-deployment utube-micro=sarafriends1986/scale-utube-micro-node:v_00.00.001'
+			 echo "After Deploying new release version to Kubernetes..."
+			 sh 'kubectl get deployments utube-micro-deployment -o wide'
 			 
 		   } else {
 			  echo "Nothing"
