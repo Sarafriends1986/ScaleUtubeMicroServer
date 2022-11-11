@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: utube-micro-deployment
+  labels:
+    app: utube-micro
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: utube-micro
+  template:
+    metadata:
+      labels:
+        app: utube-micro
+    spec:
+      containers:
+      - name: utube-micro
+        image: sarafriends1986/scale-utube-micro-node:latest
+        ports:
+        - containerPort: 8787
