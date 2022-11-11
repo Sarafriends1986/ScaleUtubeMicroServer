@@ -3,9 +3,7 @@
 /* build in Master node */
 //node{
 /* build in Slave node*/
-node('Slave') {
-   
-   
+node('slave_A') {
    stage('Setup parameters') {
    
 	   try {
@@ -20,7 +18,6 @@ node('Slave') {
 		}
 	
    }
-
    stage('Checkout Code') { 
      
 	 try {
@@ -31,7 +28,6 @@ node('Slave') {
 	 }
 	 
    }
-   
    stage('Maven Test') {
    
 		try {
