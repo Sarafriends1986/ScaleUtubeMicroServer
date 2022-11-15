@@ -23,7 +23,7 @@ node('slave_A') {
 			 sh 'echo "Docker Build..."'
 			 sh 'pwd'
 			 sh 'ls -ltr'
-			 sh 'docker build -t sarafriends1986/scale-utube-micro-node:v_00.00.004 .'
+			 sh 'docker build -t sarafriends1986/scale-utube-micro-node:v_00.00.005 .'
 			 
 		   } else {
 			  echo "Nothing"
@@ -44,7 +44,7 @@ node('slave_A') {
 			 sh 'pwd'
 			 sh 'ls -ltr'
 			 sh 'docker images sarafriends1986/scale-utube-micro-node'
-			 sh 'docker push sarafriends1986/scale-utube-micro-node:v_00.00.004'
+			 sh 'docker push sarafriends1986/scale-utube-micro-node:v_00.00.005'
 			 
 		   } else {
 			   echo "Nothing"
@@ -65,7 +65,7 @@ node('slave_A') {
 			 sh 'pwd'
 			 sh 'ls -ltr'
 			 sh 'kubectl get deployments utube-micro-deployment -o wide'
-			 sh 'kubectl set image deployment/utube-micro-deployment utube-micro=sarafriends1986/scale-utube-micro-node:v_00.00.004'
+			 sh 'kubectl set image deployment/utube-micro-deployment utube-micro=sarafriends1986/scale-utube-micro-node:v_00.00.005'
 			 echo "After Deploying new release version to Kubernetes..."
 			 sh 'kubectl get deployments utube-micro-deployment -o wide'
 			 
